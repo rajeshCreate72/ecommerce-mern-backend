@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
 
 //api endpoints
 app.use("/api/users", require("./router/user-route"));
+app.use("/api/cart", require("./router/cart-route"));
+app.use("/api/orders", require("./router/order-route"));
 
 // Start server
 const PORT = process.env.PORT || 8000;
