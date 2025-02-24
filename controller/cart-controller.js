@@ -1,7 +1,7 @@
 const Cart = require("../model/cart");
 
 const addToCart = async (req, res) => {
-    const { userId, productId, quantity } = req.body;
+    const { userId, productId, quantity = 1 } = req.body;
 
     try {
         let cart = await Cart.findOne({ user: userId }).populate("items.product").populate("user");

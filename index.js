@@ -1,11 +1,14 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const dbConnect = require("./config/db");
 
 const app = express();
 
 dotenv.config();
 dbConnect();
+
+app.use(cors());
 
 // Middleware to parse JSON requests (optional)
 app.use(express.json());

@@ -10,8 +10,8 @@ router.post("/register", createUser);
 router.post("/login", loginUser);
 
 // Authenticate JWT
-router.post("/authenticate", authenticateUser, (req, res) => {
-    res.status(200).json({ message: "Authenticated successfully", user: req.user });
+router.get("/authenticate", authenticateUser, (req, res) => {
+    res.status(200).json({ message: "Authenticated successfully", user: req.user, login: true });
 });
 
 // For adding and getting products

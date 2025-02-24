@@ -1,4 +1,3 @@
-// const { product } = require("../constants");
 const productsModel = require("../model/products");
 
 const addProducts = async (req, res) => {
@@ -8,7 +7,6 @@ const addProducts = async (req, res) => {
         await productsModel.insertMany(productArr);
         res.status(201).json({ message: "Products added successfully" });
     } catch (error) {
-        console.error("Error adding products:", error);
         res.status(500).json({ message: "Error adding products", error: error.message });
     }
 };

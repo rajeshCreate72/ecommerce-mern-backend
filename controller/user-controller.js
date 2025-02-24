@@ -6,13 +6,14 @@ const createUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
-        const user = new Users({ name, email, password });
         const existingUser = await Users.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ error: "Email already exists" });
+            return res.json({ message: "Email already exists" });
         }
         const salt = 10;
         const hashedPassword = await bcrypt.hash(password, salt);
+
+        const user = new Users({ name, email, password });
 
         user.password = hashedPassword;
         await user.save();
@@ -31,7 +32,7 @@ const loginUser = async (req, res) => {
     try {
         const user = await Users.findOne({ email });
         if (!user) {
-            return res.status(401).json({ error: "No user found, Register" });
+            return res.json({ message: "No user found, Register" });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
