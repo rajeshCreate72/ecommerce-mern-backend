@@ -1,7 +1,5 @@
 # Backend for ecommerce application
 
-## Add the project to the local directory
-
 ## Getting Started
 
 ### Prerequisites
